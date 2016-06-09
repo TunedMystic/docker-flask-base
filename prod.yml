@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+  # Nginx
+  nginx:
+    image: jsanweb/nginx1
+    container_name: nginx
+    restart: always
+    links:
+      - app
+    ports:
+      - "80:80"
+
+  # Application
+  app:
+    image: jsanweb/app1
+    container_name: app
+    restart: always
+    volumes_from:
+      - data
+
+  # Data
+  data:
+    image: jsanweb/data1
+    container_name: data
+    volumes:
+      - /var/lib/appdata
