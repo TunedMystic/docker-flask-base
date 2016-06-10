@@ -1,17 +1,19 @@
+#!/usr/bin/env bash
+
 ##
 ## Workflow for deploying docker containers.
 ##
 
-alias dc="docker-compose"
+dc="docker-compose"
 
 # Pull latest changes.
-dc pull
+$dc pull
 
 # Stop existing containers.
-dc stop -t 1
+$dc stop -t 1
 
 # Remove existing volumes.
-dc rm -fv
+$dc rm -fv
 
 # Recreate and start containers.
-dc up -d
+$dc up -d
